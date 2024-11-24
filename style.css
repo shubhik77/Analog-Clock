@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: white;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #212121;
+}
+
+.container {
+    position: relative;
+}
+
+.clock {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.clock span {
+    position: absolute;
+    transform: rotate(calc(30deg * var(--i)));
+    text-align: center;
+    inset: 10px;
+}
+
+.clock span b {
+    transform: rotate(calc(-30deg * var(--i)));
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.clock::before {
+    content: '';
+    position: absolute;
+    width: 12px; /* Size of the central pivot point */
+    height: 12px;
+    border-radius: 50%; /* Circular pivot point */
+    background-color: #fff; /* White color for contrast */
+    z-index: 10; /* Ensure it appears above other elements */
+}
+
+.hand {
+    position: absolute;
+    width: 4px; /* Consistent width for all hands */
+    background-color: var(--clr); /* Hand color based on variable */
+    transform-origin: bottom center; /* Pivot point at the bottom of the hand */
+    transform: rotate(0deg); /* Initial position */
+    z-index: 5; /* Ensure hands appear above other elements */
+}
+
+
+.hand i {
+    position: relative;
+    background-color: var(--clr);
+    width: 100%; /* Full width of the .hand container */
+    height: 50%; /* Set the length as a percentage of .hand */
+    border-radius: 8px; /* Smooth edges for the hand */
+}
+
+#hour {
+    height: 80px; /* Shorter height for hour hand */
+    top: 70px; /* Center the hour hand around the clock */
+}
+
+#min {
+    height: 110px; /* Medium height for minute hand */
+    top: 40px; /* Center the minute hand around the clock */
+}
+
+#sec {
+    height: 140px; /* Longest height for second hand */
+    top: 10px; /* Center the second hand around the clock */
+}
